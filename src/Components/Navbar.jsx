@@ -1,9 +1,11 @@
 import React from "react";
+import { useState } from "react";
 import { headerLogo } from "../assets/images";
 import { hamburger } from "../assets/icons";
 import { navLinks } from "../constants/index";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <header className="padding-x py-8 absolute z-10 w-full">
       <nav className="flex justify-between items-center max-container">
@@ -22,8 +24,33 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        <div className="hidden max-lg:block">
-          <img src={hamburger} alt="hamburger" width={25} height={25} />
+        <div className="hidden max-lg:block w-16">
+          <img
+            src={hamburger}
+            alt="hamburger"
+            width={25}
+            height={25}
+            onClick={() => setIsOpen(!isOpen)}
+            className="cursor-pointer relative -right-12"
+          />
+          {isOpen && (
+            <ul className="absolute w-max py-1 flex flex-col justify-items-end">
+              {navLinks.map((item) => (
+                <li
+                  className="hover:bg-gray-100 py-1 w-full flex"
+                  style={{ direction: "rtl" }}
+                  key={item.label}
+                >
+                  <a
+                    href={item.href}
+                    className="font-montserrat leading-normal text-justify text-sm text-slate-gray"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </nav>
     </header>
