@@ -37,7 +37,7 @@ const Navbar = () => {
             <ul className="absolute w-max py-1 flex flex-col justify-items-end">
               {navLinks.map((item) => (
                 <li
-                  className="hover:bg-gray-100 py-1 w-full flex"
+                  className="hover:bg-gray-200 py-1 w-full flex rounded-lg px-1"
                   style={{ direction: "rtl" }}
                   key={item.label}
                 >
